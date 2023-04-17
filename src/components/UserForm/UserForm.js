@@ -3,6 +3,8 @@ import { Button } from '../Button';
 import { useState } from 'react';
 
 export const UserForm = (props) => {
+  const { onShowErrorModal, onAddUser } = props;
+  
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
 
@@ -18,9 +20,9 @@ export const UserForm = (props) => {
     e.preventDefault();
 
     if (age === '' || name === '') {
-      props.onShowErrorModal(true);
+      onShowErrorModal(true);
     } else {
-      props.onAddUser({
+      onAddUser({
         name: name,
         age: age,
         id: Math.random().toString()

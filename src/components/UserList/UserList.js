@@ -1,8 +1,8 @@
 import styles from './UserList.module.css';
 
 export const UserList = (props) => {
-  console.log(props)
-  const allUsers = props.users.map((el) => (
+  const { users } = props;
+  const allUsers = users.map((el) => (
     <li key={el.id}>{el.name} - {el.age} лет</li>
   ))
 

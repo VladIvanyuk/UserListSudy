@@ -1,11 +1,13 @@
 import styles from './ErrorModal.module.css';
 import { Button } from '../Button';
-import { useState } from 'react';
 
 export const ErrorModal = (props) => {
+  const { onShowErrorModal } = props;
+
   const showErrorModalHandler = (e) => {
-    console.log(e)
-    props.onShowErrorModal(false);
+    if (e.target === e.currentTarget) {
+      onShowErrorModal(false);
+    }
   }
 
   return (
@@ -17,7 +19,7 @@ export const ErrorModal = (props) => {
         <div className={styles.content}>
           <div>Эти поля не могут быть пустыми</div>
           <div className={styles.actions}>
-            <Button>Закрыть</Button>
+            <Button onClick={showErrorModalHandler}>Закрыть</Button>
           </div>
         </div>
       </div>
