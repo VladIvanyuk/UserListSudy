@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import { UserForm } from './components/UserForm/UserForm.js';
+import { UserList } from './components/UserList/UserList.js';
+import { ErrorModal } from './components/ErrorModal/ErrorModal.js';
 import './App.css';
-import { UserForm } from './components/UserForm';
-import { UserList } from './components/UserList';
-import { ErrorModal } from './components/ErrorModal';
 
 function App() {
   const [users, setUsers] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [errorType, setErrorType] = useState('');
 
   const addUserHandler = (user) => {
     console.log(user);
@@ -16,16 +17,21 @@ function App() {
     ])
   }
 
-  const showErrorModalHandler = (error) => {
+  const showErrorModalHandler = (error, type) => {
     setIsError(error);
+    setErrorType(type);
   }
 
+  const onDeleteUserHandler = (id) => {
+    setUsers((prev) => 
+    prev.filter((el) => el.id !== id));
+  }
 
   return (
     <div className="App">
       <UserForm onAddUser={addUserHandler} onShowErrorModal={showErrorModalHandler}/>
-      <UserList users={users} />
-      {isError && <ErrorModal onShowErrorModal={showErrorModalHandler}/>}
+      <UserList users={users} onDeleteUser={onDeleteUserHandler}/>
+      {isError && <ErrorModal onShowErrorModal={showErrorModalHandler} errorType={errorType}/>}
     </div>
   );
 }

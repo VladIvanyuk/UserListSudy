@@ -1,9 +1,9 @@
 import styles from './UserForm.module.css';
-import { Button } from '../Button';
+import { Button } from '../UIElements/Button/Button.js';
 import { useState } from 'react';
 
 export const UserForm = (props) => {
-  const { onShowErrorModal, onAddUser } = props;
+  const { onShowErrorModal, onAddUser, onSaveErrorType } = props;
   
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
@@ -20,7 +20,9 @@ export const UserForm = (props) => {
     e.preventDefault();
 
     if (age === '' || name === '') {
-      onShowErrorModal(true);
+      onShowErrorModal(true, 'empty');
+    } else if (Number(age) < 0) {
+      onShowErrorModal(true, 'age');
     } else {
       onAddUser({
         name: name,
