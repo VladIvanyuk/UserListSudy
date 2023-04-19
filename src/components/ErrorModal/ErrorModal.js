@@ -21,7 +21,7 @@ export const ErrorModal = (props) => {
         <div className={styles.content}>
           <div>{errorMessage}</div>
           <div className={styles.actions}>
-            <Button onCloseModal={showErrorModalHandler}>Закрыть</Button>
+            <Button onClick={showErrorModalHandler}>Закрыть</Button>
           </div>
         </div>
       </div>

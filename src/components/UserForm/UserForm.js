@@ -2,8 +2,7 @@ import styles from './UserForm.module.css';
 import { Button } from '../UIElements/Button/Button.js';
 import { useState } from 'react';
 
-export const UserForm = (props) => {
-  const { onShowErrorModal, onAddUser, onSaveErrorType } = props;
+export const UserForm = ({ onShowErrorModal, onAddUser }) => {
   
   const [name, setName] = useState('');
   const [age, setAge] = useState('');

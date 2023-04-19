@@ -1,11 +1,12 @@
+import { Button } from '../UIElements/Button/Button';
 import styles from './UserList.module.css';
 
 export const UserList = (props) => {
-
+  console.log(props)
   const { users, onDeleteUser } = props;
 
-  const saveDeletedIdHandler = (e) => {
-    onDeleteUser(e.target.dataset.id);
+  const saveDeletedIdHandler = (id) => {
+    onDeleteUser(id);
   }
 
 
@@ -15,7 +16,7 @@ export const UserList = (props) => {
         {el.name} - {el.age} лет
       </div>
       <div>
-        <button data-id={el.id} onClick={saveDeletedIdHandler}>Удалить</button>
+        <Button onClick={saveDeletedIdHandler.bind(null, el.id)}>Удалить</Button>
       </div>
     </li>
   ))

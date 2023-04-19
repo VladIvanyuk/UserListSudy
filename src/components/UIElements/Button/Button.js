@@ -1,9 +1,9 @@
 import styles from './Button.module.css';
 
 export const Button = (props) => {
-  const { onCloseModal } = props;
+  const { onClick } = props;
   return (
-    <button onClick={onCloseModal} className={styles.button}>
+    <button onClick={onClick} className={styles.button}>
       {props.children}
     </button>
   );
