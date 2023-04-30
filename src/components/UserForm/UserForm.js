@@ -12,6 +12,7 @@ export const UserForm = ({ onShowErrorModal, onAddUser }) => {
   }
 
   const changeAgeHandler = (e) => {
+    console.log(e)
     setAge(e.target.value);
   }
 
@@ -41,8 +42,10 @@ export const UserForm = ({ onShowErrorModal, onAddUser }) => {
 
       <label htmlFor="age">Возраст</label>
       <input onChange={changeAgeHandler} value={age} type="number" id='age' />
+      <button type='reset'>Очистить</button>
 
       <Button>Добавить Пользователя</Button>
     </form>
   );
 };
+
